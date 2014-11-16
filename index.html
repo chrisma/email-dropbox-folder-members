@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>E-Mail all members of Dropbox folder</title>
+    <style type="text/css" media="screen">
+		img {width:750px;}
+		body {margin: 0px auto; width:750px;font-family: Open Sans, sans-serif}
+		h1 {text-align: center;}
+	</style>
+  </head>
+  <body>
+  <h1>E-Mail All Members of a Dropbox Folder</h1>
+    <p>
+    	<strong>1.</strong> Drag the following link to the bookmarks bar: <a href="javascript:(function(){if(document.URL!='https://www.dropbox.com/share'){var answer=confirm('Only works on https://www.dropbox.com/share\nRedirect there now?.');if(answer){window.location.href='https://www.dropbox.com/share';} return} var modal=document.querySelector('#folder-share-show-modal');if(!modal){alert('Please open the Options menu of a shared folder.');return} var loading=document.querySelector('#folder-share-show-modal.ajax-loading');if(loading){alert('Please try again when loading is complete.');return} var a=document.querySelectorAll('.sf-tooltip-row:not(.sf-tooltip-reinvite) > a');var list=[];for(var i in a){if(a.hasOwnProperty(i)&&i!='length'){list.push(a[i].getAttribute('href').replace('mailto:',''));}} document.getElementsByTagName('h5')[0].innerHTML+=' <a href=mailto:'+list.join(';')+'>(E-Mail all members)</a>';void(0);}());">E-Mail folder members</a>
+	</p>
+	<p><strong>2.</strong> Go to the overview of shared Dropbox folders at <a href="https://www.dropbox.com/share">https://www.dropbox.com/share</a> and open the options menu of the desired folder.</p>
+	<img src="sharing.png">
+	<p><strong>3.</strong> Once the members have loaded, click the new bookmarklet.</p>
+	<img src="activate.png">
+	<p><strong>4.</strong> Click the newly created link (next to the member count) to E-Mail all members of the shared folder.</p>
+	<img src="done.png">
+  </body>
+</html>
