@@ -1,21 +1,18 @@
 /*Use immediately-invoked function expression*/
 (function(){
-  if ( document.URL != 'https://www.dropbox.com/share' ) { 
-    var answer = confirm('Only works on https://www.dropbox.com/share\nRedirect there now?.');
-    if ( answer ) { window.location.href = 'https://www.dropbox.com/share';}
+  var shareURL = 'https://www.dropbox.com/share/folders';
+  if ( document.URL != shareURL ) {
+    var answer = confirm('Only works on' + shareURL + '\nRedirect there now?');
+    if ( answer ) { window.location.href = shareURL;}
     return
   }
-  var modal = document.querySelector('#folder-share-show-modal');
-  if ( !modal ) { alert('Please open the Options menu of a shared folder.'); return }
-  var loading = document.querySelector('#folder-share-show-modal.ajax-loading');
+  var modal = document.querySelector('div.unified-share-modal');
+  if ( !modal ) { alert('Please open the \'Share\' menu of a shared folder.'); return }
+  var loading = document.querySelector('div.c-loader');
   if ( loading ) { alert('Please try again when loading is complete.'); return }
-  var a = document.querySelectorAll('.sf-tooltip-row:not(.sf-tooltip-reinvite) > a');
+  var emailDivs = document.querySelectorAll('div.sharing-member-info__email');
   var list = [];
-  for (var i in a) {
-    if ( a.hasOwnProperty(i) && i != 'length') {
-    list.push(a[i].getAttribute('href').replace('mailto:',''));
-    }
-  }
-  document.getElementsByTagName('h5')[0].innerHTML += ' <a href=mailto:' + list.join(';') + '>(E-Mail all members)</a>';
+  [].forEach.call(emailDivs, function(div){list.push(div.innerHTML);});
+  document.querySelector('h4#unified-share-modal-title').innerHTML += ' <a href=mailto:' + list.join(';') + '>(E-Mail all members)</a>';
   void(0);
 }());
