@@ -11,6 +11,7 @@
   </head>
   <body>
     <h1>E-Mail All Members of a Dropbox Folder</h1>
+    <h4 style="color: #E62B2B">(WARNING: this is tested only on Google Chrome, Firefox is blocking userscripts on dropbox.com)</h4>
     <p>
       <strong>1.</strong> Drag the following link to the bookmarks bar: <a href="javascript:(function(){ var shareURL = 'https://www.dropbox.com/share/folders'; if ( document.URL != shareURL ) {  var answer = confirm('Only works on' + shareURL + '\nRedirect there now?'); if ( answer ) { window.location.href = shareURL;} return } var modal = document.querySelector('div.unified-share-modal'); if ( !modal ) { alert('Please open the \'Share\' menu of a shared folder.'); return } var loading = document.querySelector('div.c-loader'); if ( loading ) { alert('Please try again when loading is complete.'); return } var emailDivs = document.querySelectorAll('div.sharing-member-info__email'); var list = []; [].forEach.call(emailDivs, function(div){list.push(div.innerHTML);}); document.querySelector('h4#unified-share-modal-title').innerHTML += ' <a href=mailto:' + list.join(';') + '>(E-Mail all members)</a>'; void(0);}());">E-Mail folder members</a>
     </p>
