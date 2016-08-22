@@ -4,22 +4,26 @@
     <meta charset="utf-8">
     <title>E-Mail all members of Dropbox folder</title>
     <style type="text/css" media="screen">
-      img {width:750px;}
-      body {margin: 0px auto; width:750px;font-family: Open Sans, sans-serif}
+      img.tutorial {width:750px;}
+      body {margin: 0px auto; width:750px; font-family: Open Sans, sans-serif;}
       h1 {text-align: center;}
+      .red {color: #E62B2B;}
+      #gh {position: absolute; top: 0; right: 0; border: 0;}
     </style>
   </head>
   <body>
     <h1>E-Mail All Members of a Dropbox Folder</h1>
-    <h4 style="color: #E62B2B">(WARNING: this is tested only on Google Chrome, Firefox is blocking userscripts on dropbox.com)</h4>
+    <h4 class="red">(WARNING: this is tested only on Google Chrome, Firefox is blocking userscripts on dropbox.com due to <a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP">CSP</a>)</h4>
     <p>
       <strong>1.</strong> Drag the following link to the bookmarks bar: <a href="javascript:(function(){ var shareURL = 'https://www.dropbox.com/share/folders'; if ( document.URL != shareURL ) {  var answer = confirm('Only works on' + shareURL + '\nRedirect there now?'); if ( answer ) { window.location.href = shareURL;} return } var modal = document.querySelector('div.unified-share-modal'); if ( !modal ) { alert('Please open the \'Share\' menu of a shared folder.'); return } var loading = document.querySelector('div.c-loader'); if ( loading ) { alert('Please try again when loading is complete.'); return } var emailDivs = document.querySelectorAll('div.sharing-member-info__email'); var list = []; [].forEach.call(emailDivs, function(div){list.push(div.innerHTML);}); document.querySelector('h4#unified-share-modal-title').innerHTML += ' <a href=mailto:' + list.join(';') + '>(E-Mail all members)</a>'; void(0);}());">E-Mail folder members</a>
     </p>
     <p><strong>2.</strong> Go to the overview of shared Dropbox folders at <a href="https://www.dropbox.com/share/folders">https://www.dropbox.com/share/folders</a> and open the "Share" menu of the desired folder.</p>
-    <img src="sharing.png">
+    <img class="tutorial" src="sharing.png">
     <p><strong>3.</strong> Once the members have loaded, click the new bookmarklet.</p>
-    <img src="activate.png">
+    <img class="tutorial" src="activate.png">
     <p><strong>4.</strong> Click the newly created link (next to the member count) to E-Mail all members of the shared folder.</p>
-    <img src="done.png">
+    <img class="tutorial" src="done.png">
+    <!-- Github Badge -->
+    <a href="https://github.com/you"><img id="gh" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
   </body>
 </html>
