@@ -12,7 +12,10 @@
   if ( loading ) { alert('Please try again when loading is complete.'); return }
   var emailDivs = document.querySelectorAll('div.sharing-member-info__email');
   var list = [];
-  [].forEach.call(emailDivs, function(div){list.push(div.innerHTML);});
+  [].forEach.call(emailDivs, function(div){
+    var email = div.innerHTML;
+    if (email != '') list.push(email);
+  });
   document.querySelector('h4#unified-share-modal-title').innerHTML += ' <a href=mailto:' + list.join(';') + '>(E-Mail all members)</a>';
   void(0);
 }());
